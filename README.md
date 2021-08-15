@@ -5,7 +5,7 @@ Additional features for Unity's PlayerPrefs
 Save Vector3 and Vector2
 
 ## Documentation
-### class PlayerPrefsPlus
+### public class PlayerPrefsPlus : MonoBehaviour
 #### `void SetVector3(string key, Vector3 value)`
 ##### Description
 Saves `value` with `key` as the key. It saves the vector as a string using `PlayerPrefs.SetString(string key, string value)` in the format of `Vector3.ToString()`("(x, y, z)").
