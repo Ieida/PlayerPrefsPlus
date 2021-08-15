@@ -1,6 +1,13 @@
-public static class PlayerPrefsPlus
+using UnityEngine;
+
+public class PlayerPrefsPlus : MonoBehaviour
 {
     public static void SetVector3(string key, Vector3 value)
+    {
+        PlayerPrefs.SetString(key, value.ToString());
+    }
+
+    public static void SetVector2(string key, Vector2 value)
     {
         PlayerPrefs.SetString(key, value.ToString());
     }
@@ -12,17 +19,34 @@ public static class PlayerPrefsPlus
 
         if (!string.IsNullOrEmpty(vectorString))
         {
+            vectorString = vectorString.Trim('(', ',', ')');
             string[] values = vectorString.Split(' ');
-            for (int i = 0; i < values.Length; i++)
-            {
-                values[i] = values[i].Trim('(', ',', ')');
-            }
 
             if (float.TryParse(values[0], out float x)
             && float.TryParse(values[1], out float y)
             && float.TryParse(values[2], out float z))
             {
                 vector = new Vector3(x, y, z);
+            }
+        }
+
+        return vector;
+    }
+
+    public static Vector2 GetVector2(string key, Vector2 defaultValue = default(Vector2))
+    {
+        string vectorString = PlayerPrefs.GetString(key, defaultValue.ToString());
+        Vector2 vector = defaultValue;
+
+        if (!string.IsNullOrEmpty(vectorString))
+        {
+            vectorString = vectorString.Trim('(', ',', ')');
+            string[] values = vectorString.Split(' ');
+
+            if (float.TryParse(values[0], out float x)
+            && float.TryParse(values[1], out float y))
+            {
+                vector = new Vector2(x, y);
             }
         }
 
