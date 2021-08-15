@@ -1,5 +1,5 @@
 # Documentation
-## public class PlayerPrefsPlus : MonoBehaviour
+## `public class PlayerPrefsPlus : MonoBehaviour`
 ### `public static void SetVector3(string key, Vector3 value)`
 #### Description
 Saves `value` with `key` as the key. It saves the vector as a string using `PlayerPrefs.SetString(string key, string value)` in the format of `Vector3.ToString()`("(x, y, z)").
